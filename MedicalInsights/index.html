@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Medical Insights</title>
+    <link rel="icon" type="image/png" href="images/icon.jpg" sizes="16x16">
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/map.js"></script>
+</head>
+
+<body>
+    <div ng-app="app">
+        <div ng-controller="formController">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">
+        <img alt="MedicalInsights" src="images/brand.png" width="50" height="30" >
+      </a>
+                        <a class="navbar-brand" href="#">Medical Insights</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#home">Home <span class="sr-only">(current)</span></a></li>
+                            <li><a href="#register">Register</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                        </ul>
+                        <span class="navbar-form navbar-right" ng-controller="loginController">
+					   <span class="login-det"> UserName : </span>
+                        <input type="text" ng-model="userName" ng-keypress="clear()"> <span class="login-det">Password :</span>
+                        <input type="password" ng-model="password" ng-keypress="clear()">
+                        <button ng-click="login()" type="button" class="btn btn-success">Log in </button>
+                        <br/> <span class="login-det">{{res}}</span>
+                        </span>
+                    </div>
+                </div>
+            </nav>
+            <div id="home">
+            </div>
+            <div ng-controller="registerController" class="jumbotron">
+                <div id="register" class="input-group input-group">
+                    <h2>Get Registered</h2>
+                    <p>UserName :
+                        <input type="text" class="form-control" ng-model="userName" ng-keypress="clear()" ng-blur="verifyUserName()" required/>
+                        <br/> {{uName}}</p>
+                    <p>Registration Number :
+                        <input type="text" class="form-control" ng-model="regNum" ng-keypress="clear()" ng-blur="verifyReg()" required/>
+                        <br/> {{reg}}</p>
+                    <p>Email:
+                        <input type="email" class="form-control" ng-model="mail" ng-keypress="clear()" ng-blur="verifyEmail()" required/>
+                        <br/> </p>
+                    <p>Address:</p>
+                     <span>Street Address  :</span>   <input type="text" class="form-control" ng-model="address" ng-keypress="clear()" ng-blur="verifyAddr()" required/> <br/>
+                     <span>City :</span>   <input type="text" class="form-control" ng-model="city" ng-keypress="clear()" ng-blur="verifyCity()" required/> <br/><br/>
+                     <span>State  :</span> <select ng-model="states" ng-blur="verifyState()" ng-options="states for states in state"></select> 
+                        <br/> 
+                    <p>Zip:
+                        <input type="text" class="form-control". ng-blur="verifyZip()" ng-model="zip" ng-keypress="clear()" required/>
+                        <br/>
+                    </p>
+                    <p> Password:
+                        <input type="password" class="form-control" ng-blur="verifyPass()" ng-model="password" ng-keypress="clear()" required/>
+                        <br/>
+                    </p>
+                    <button ng-click="register()" type="button" class="btn btn-success">Register!!</button>
+                    <br/> {{res}}
+                </div>
+            </div>
+            <div id="contact">
+                <h2>Contact Us</h2>
+                <div id="addr">
+                    <address>
+                        Medical Insights Global
+                        <br/> Suite 4,
+                        <br/> Kansas City
+                        <br/> Missouri
+                        <br/> USA </address>  
+                </div>
+                <div id="map">
+                </div>
+            </div>    
+        </div>
+    </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZp_jnLqC1mCKQOYuYy3P8FfFzdbPi0oE&callback=initMap">
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

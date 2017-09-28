@@ -1,0 +1,19 @@
+.login-det{
+	color : white;
+}
+  #addr{
+  	float:left;
+  
+  	margin-left: 20px;
+  }
+   #map {
+        height: 200px;
+        width: 50%;
+        float:right;
+        margin-right : 40px;
+
+       }
+
+       #register{
+       	margin-left:40px;
+       }
